@@ -14,6 +14,10 @@
 		E929F17226B3B86F000021FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E929F17026B3B86F000021FC /* Main.storyboard */; };
 		E929F17E26B3B870000021FC /* ZoomAutocallerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929F17D26B3B870000021FC /* ZoomAutocallerTests.swift */; };
 		E929F18926B3B870000021FC /* ZoomAutocallerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929F18826B3B870000021FC /* ZoomAutocallerUITests.swift */; };
+		E929F19726B3B896000021FC /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929F19626B3B896000021FC /* StatusBarController.swift */; };
+		E929F19C26B3CD9B000021FC /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929F19B26B3CD9B000021FC /* Meeting.swift */; };
+		E929F19E26B3CDC1000021FC /* Meetings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929F19D26B3CDC1000021FC /* Meetings.swift */; };
+		E929F1A026BCDEC8000021FC /* NewMeeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929F19F26BCDEC8000021FC /* NewMeeting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,10 @@
 		E929F18426B3B870000021FC /* ZoomAutocallerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZoomAutocallerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E929F18826B3B870000021FC /* ZoomAutocallerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAutocallerUITests.swift; sourceTree = "<group>"; };
 		E929F18A26B3B870000021FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E929F19626B3B896000021FC /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
+		E929F19B26B3CD9B000021FC /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
+		E929F19D26B3CDC1000021FC /* Meetings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meetings.swift; sourceTree = "<group>"; };
+		E929F19F26BCDEC8000021FC /* NewMeeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMeeting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +106,7 @@
 		E929F16626B3B86E000021FC /* ZoomAutocaller */ = {
 			isa = PBXGroup;
 			children = (
+				E929F19A26B3CD73000021FC /* Helpers */,
 				E929F16726B3B86E000021FC /* AppDelegate.swift */,
 				E929F16926B3B86E000021FC /* ContentView.swift */,
 				E929F16B26B3B86F000021FC /* Assets.xcassets */,
@@ -105,6 +114,7 @@
 				E929F17326B3B86F000021FC /* Info.plist */,
 				E929F17426B3B86F000021FC /* ZoomAutocaller.entitlements */,
 				E929F16D26B3B86F000021FC /* Preview Content */,
+				E929F19626B3B896000021FC /* StatusBarController.swift */,
 			);
 			path = ZoomAutocaller;
 			sourceTree = "<group>";
@@ -133,6 +143,16 @@
 				E929F18A26B3B870000021FC /* Info.plist */,
 			);
 			path = ZoomAutocallerUITests;
+			sourceTree = "<group>";
+		};
+		E929F19A26B3CD73000021FC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E929F19B26B3CD9B000021FC /* Meeting.swift */,
+				E929F19D26B3CDC1000021FC /* Meetings.swift */,
+				E929F19F26BCDEC8000021FC /* NewMeeting.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +286,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E929F16A26B3B86E000021FC /* ContentView.swift in Sources */,
+				E929F19C26B3CD9B000021FC /* Meeting.swift in Sources */,
+				E929F1A026BCDEC8000021FC /* NewMeeting.swift in Sources */,
+				E929F19726B3B896000021FC /* StatusBarController.swift in Sources */,
+				E929F19E26B3CDC1000021FC /* Meetings.swift in Sources */,
 				E929F16826B3B86E000021FC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
