@@ -38,7 +38,7 @@ class StatusBarController {
                     }
                 }
                 
-                Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) {_ in
+                Timer.scheduledTimer(withTimeInterval: 40.0, repeats: true) {_ in
                     if(self.isInit) {
                         print("Pooling For New Events")
                         self.getNewEvents()
