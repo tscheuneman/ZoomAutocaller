@@ -1,6 +1,6 @@
 #  ZoomAutocaller
 
-This is a simple toolbar utility that will render a dropdown and play a ringtone when a meeting with a zoom link is schedled to occur.
+This is a simple toolbar utility that will render a dropdown and play a ringtone when a meeting with a zoom link is scheduled to occur.
 
 ![](./_docs/screenshot.png)
 
