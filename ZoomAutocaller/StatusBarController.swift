@@ -28,11 +28,11 @@ class StatusBarController {
             statusBarButton.target = self
         }
         
-        if let audioAsset = NSDataAsset(name: "chimes") {
+        if let audioAsset = NSDataAsset(name: "ring") {
             do {
                 av = try AVAudioPlayer(data: audioAsset.data)
                 getCalendarEvents()
-                Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) {_ in
+                Timer.scheduledTimer(withTimeInterval: 300.0, repeats: true) {_ in
                     if(self.isInit) {
                         self.getCalendarEvents()
                     }
@@ -40,6 +40,7 @@ class StatusBarController {
                 
                 Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) {_ in
                     if(self.isInit) {
+                        print("Pooling For New Events")
                         self.getNewEvents()
                     }
                 }
