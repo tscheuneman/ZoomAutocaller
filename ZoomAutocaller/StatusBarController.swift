@@ -65,13 +65,16 @@ class StatusBarController {
     }
     
     func showPopover(_ sender: AnyObject) {
-        if let statusBarButton = statusItem.button {
-            popover.show(relativeTo: statusBarButton.bounds, of: statusBarButton, preferredEdge: NSRectEdge.maxY)
+        if(nextMeeting.hasMeetings()) {
+            if let statusBarButton = statusItem.button {
+                popover.show(relativeTo: statusBarButton.bounds, of: statusBarButton, preferredEdge: NSRectEdge.maxY)
+            }
         }
     }
     
     
     func hidePopover(_ sender: AnyObject) {
+        self.av.stop()
         popover.performClose(sender)
     }
     
@@ -143,7 +146,8 @@ class StatusBarController {
     func openedMeeting() {
         DispatchQueue.main.async {
             if let statusBarButton = self.statusItem.button {
-                self.av.stop()
+                nextMeeting.clearMeetings()
+                self.delegate.initView()
                 statusBarButton.performClick(self)
             }
         }

@@ -22,4 +22,12 @@ class NextMeeting {
     public func getMeetings() -> [Meeting] {
         return self.meetings
     }
+    
+    public func hasMeetings() -> Bool {
+        return self.meetings.count > 0
+    }
+    
+    public func clearMeetings() {
+        self.meetings = []
+    }
 }
