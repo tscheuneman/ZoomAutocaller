@@ -75,6 +75,7 @@ class StatusBarController {
     
     func hidePopover(_ sender: AnyObject) {
         self.av.stop()
+        
         popover.performClose(sender)
     }
     
@@ -132,7 +133,7 @@ class StatusBarController {
             nextMeeting.write(meetings: values)
             
             if(values.count > 0) {
-                self.av.play()
+                self.av.play(atTime: 0)
                 DispatchQueue.main.async {
                     if let statusBarButton = self.statusItem.button {
                         self.delegate.initView()
