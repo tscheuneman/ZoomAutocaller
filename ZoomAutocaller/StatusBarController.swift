@@ -103,11 +103,27 @@ class StatusBarController {
                     let predicate = self.eventStore.predicateForEvents(withStart: minusOneHOur, end: plusOneHour, calendars: self.calendars)
 
                     let events = self.eventStore.events(matching: predicate)
+                    let types: NSTextCheckingResult.CheckingType = .link
+
+                    let detector = try! NSDataDetector(types: types.rawValue)
 
                     for event in events {
-                        if(event.location != nil) {
-                            if(!meetings.exists(link: event.location!, time: event.startDate)) {
-                                let meeting = Meeting(time: event.startDate, title: event.title, zoomLink: event.location!);
+                        let eventNotes = event.notes!
+
+                        let matches = detector.matches(in: eventNotes, options: [], range: NSMakeRange(0, eventNotes.count))
+
+                        var resolvedUrl: String? = ""
+                        for match in matches {
+                            let zoomUrl = match.url?.absoluteString;
+                            if(((match.url?.absoluteString.contains("zoom.us"))) != nil) {
+                                resolvedUrl = zoomUrl
+                                break
+                            }
+                        }
+
+                        if(resolvedUrl != "") {
+                            if(!meetings.exists(link: resolvedUrl!, time: event.startDate)) {
+                                let meeting = Meeting(time: event.startDate, title: event.title, zoomLink: resolvedUrl!);
                                 
                                 meetings.addMeeting(meeting: meeting)
                             } else {
