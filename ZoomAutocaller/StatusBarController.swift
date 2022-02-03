@@ -108,7 +108,7 @@ class StatusBarController {
                     let detector = try! NSDataDetector(types: types.rawValue)
 
                     for event in events {
-                        let eventNotes = event.notes!
+                        let eventNotes = event.notes ?? ""
 
                         let matches = detector.matches(in: eventNotes, options: [], range: NSMakeRange(0, eventNotes.count))
 
@@ -126,6 +126,7 @@ class StatusBarController {
                                 let meeting = Meeting(time: event.startDate, title: event.title, zoomLink: resolvedUrl!);
                                 
                                 meetings.addMeeting(meeting: meeting)
+                                print("Added event")
                             } else {
                                 print("didn't add")
                             }
