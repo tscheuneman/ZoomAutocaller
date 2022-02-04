@@ -112,18 +112,17 @@ class StatusBarController {
 
                         let matches = detector.matches(in: eventNotes, options: [], range: NSMakeRange(0, eventNotes.count))
 
-                        var resolvedUrl: String? = ""
+                        var resolvedUrl: String = ""
                         for match in matches {
-                            let zoomUrl = match.url?.absoluteString;
-                            if(((match.url?.absoluteString.contains("zoom.us"))) != nil) {
+                            let zoomUrl = match.url?.absoluteString ?? "";
+                            if(zoomUrl.contains("zoom.us")) {
                                 resolvedUrl = zoomUrl
                                 break
                             }
                         }
-
                         if(resolvedUrl != "") {
-                            if(!meetings.exists(link: resolvedUrl!, time: event.startDate)) {
-                                let meeting = Meeting(time: event.startDate, title: event.title, zoomLink: resolvedUrl!);
+                            if(!meetings.exists(link: resolvedUrl, time: event.startDate)) {
+                                let meeting = Meeting(time: event.startDate, title: event.title, zoomLink: resolvedUrl);
                                 
                                 meetings.addMeeting(meeting: meeting)
                                 print("Added event")
@@ -150,7 +149,8 @@ class StatusBarController {
             nextMeeting.write(meetings: values)
             
             if(values.count > 0) {
-                self.av.play(atTime: 0)
+                self.av.setVolume(1.0, fadeDuration: 2)
+                self.av.play()
                 DispatchQueue.main.async {
                     if let statusBarButton = self.statusItem.button {
                         self.delegate.initView()
