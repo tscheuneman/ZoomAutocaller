@@ -80,10 +80,12 @@ class StatusBarController {
     }
     
     func getCalendarEvents() {
+        // Every time we get new events, clear the previous ones
+        meetings.clearMeetings()
         eventStore.requestAccess(to: .event, completion: {
                 granted, error in
                 if let error = error {
-                   print("error")
+                   print(error)
                    return
                 }
                 if (granted) {
@@ -95,42 +97,17 @@ class StatusBarController {
                             }
                         }
                     }
-
-                    let minusOneHOur = Date(timeIntervalSinceNow: 0)
-                    let plusOneHour = Date(timeIntervalSinceNow: 3600)
                     
-                    
-                    let predicate = self.eventStore.predicateForEvents(withStart: minusOneHOur, end: plusOneHour, calendars: self.calendars)
-
-                    let events = self.eventStore.events(matching: predicate)
-                    let types: NSTextCheckingResult.CheckingType = .link
-
-                    let detector = try! NSDataDetector(types: types.rawValue)
+                    let events = findEvents(eventStore: self.eventStore, calendars: self.calendars)
 
                     for event in events {
                         let eventNotes = event.notes ?? ""
 
-                        let matches = detector.matches(in: eventNotes, options: [], range: NSMakeRange(0, eventNotes.count))
-
-                        var resolvedUrl: String = ""
-                        for match in matches {
-                            let zoomUrl = match.url?.absoluteString ?? "";
-                            if(zoomUrl.contains("zoom.us")) {
-                                resolvedUrl = zoomUrl
-                                break
-                            }
-                        }
-                        if(resolvedUrl != "") {
-                            if(!meetings.exists(link: resolvedUrl, time: event.startDate)) {
-                                let meeting = Meeting(time: event.startDate, title: event.title, zoomLink: resolvedUrl);
-                                
-                                meetings.addMeeting(meeting: meeting)
-                                print("Added event")
-                            } else {
-                                print("didn't add")
-                            }
-                        }
+                        let resolvedUrl = findUrls(text: eventNotes)
                         
+                        if(resolvedUrl != "") {
+                            meetings.addMeeting(resolvedUrl: resolvedUrl, event: event)
+                        }
                     }
                     
                     self.isInit = true;
@@ -141,10 +118,7 @@ class StatusBarController {
     
     func getNewEvents() {
         if(meetings.meetings.count > 0) {
-            let currentDate = Date(timeIntervalSinceNow: -30)
-            let oneMinLater = Date(timeIntervalSinceNow: 40)
-            
-            let values: [Meeting] = meetings.getCurrentMeetings(start: currentDate, end: oneMinLater);
+            let values: [Meeting] = meetings.getCurrentMeetings();
         
             nextMeeting.write(meetings: values)
             

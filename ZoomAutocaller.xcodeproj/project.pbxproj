@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E90FE42F298B6FD7004F3E65 /* EventUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90FE42E298B6FD7004F3E65 /* EventUtils.swift */; };
 		E929F16826B3B86E000021FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929F16726B3B86E000021FC /* AppDelegate.swift */; };
 		E929F16A26B3B86E000021FC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929F16926B3B86E000021FC /* ContentView.swift */; };
 		E929F16C26B3B86F000021FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E929F16B26B3B86F000021FC /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E90FE42E298B6FD7004F3E65 /* EventUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUtils.swift; sourceTree = "<group>"; };
 		E929F16426B3B86E000021FC /* ZoomAutocaller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZoomAutocaller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E929F16726B3B86E000021FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E929F16926B3B86E000021FC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -83,6 +85,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E90FE42D298B6FA7004F3E65 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E90FE42E298B6FD7004F3E65 /* EventUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		E929F15B26B3B86E000021FC = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +158,7 @@
 		E929F19A26B3CD73000021FC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E90FE42D298B6FA7004F3E65 /* Utils */,
 				E929F19B26B3CD9B000021FC /* Meeting.swift */,
 				E929F19D26B3CDC1000021FC /* Meetings.swift */,
 				E929F19F26BCDEC8000021FC /* NewMeeting.swift */,
@@ -289,6 +300,7 @@
 				E929F19C26B3CD9B000021FC /* Meeting.swift in Sources */,
 				E929F1A026BCDEC8000021FC /* NewMeeting.swift in Sources */,
 				E929F19726B3B896000021FC /* StatusBarController.swift in Sources */,
+				E90FE42F298B6FD7004F3E65 /* EventUtils.swift in Sources */,
 				E929F19E26B3CDC1000021FC /* Meetings.swift in Sources */,
 				E929F16826B3B86E000021FC /* AppDelegate.swift in Sources */,
 			);

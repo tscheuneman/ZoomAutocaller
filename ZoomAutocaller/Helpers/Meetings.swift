@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import EventKit
 
 let meetings = Meetings()
 
@@ -13,11 +14,11 @@ class Meetings {
     var meetings: [Meeting];
     
     init() {
-        meetings = Array()
+        meetings = []
     }
     
-    public func addMeeting(meeting: Meeting) {
-        meetings.append(meeting)
+    public func clearMeetings() {
+        meetings = []
     }
     
     public func exists(link: String, time: Date) -> Bool {
@@ -25,11 +26,22 @@ class Meetings {
         return results.count > 0
     }
     
-    public func getCurrentMeetings(start: Date, end: Date) -> [Meeting] {
-        let returnMeetings: [Meeting] = self.meetings.filter { $0.time >= start && $0.time <= end }
+    public func getCurrentMeetings() -> [Meeting] {
+        let currentDate = Date(timeIntervalSinceNow: -30)
+        let oneMinLater = Date(timeIntervalSinceNow: 40)
+        
+        let returnMeetings: [Meeting] = self.meetings.filter { $0.time >= currentDate && $0.time <= oneMinLater }
         
         self.meetings = Array(Set(self.meetings).subtracting(returnMeetings))
         
         return returnMeetings
+    }
+    
+    public func addMeeting(resolvedUrl: String, event: EKEvent) {
+        if(!self.exists(link: resolvedUrl, time: event.startDate)) {
+            let meeting = Meeting(time: event.startDate, title: event.title, zoomLink: resolvedUrl);
+            
+            meetings.append(meeting)
+        }
     }
 }
