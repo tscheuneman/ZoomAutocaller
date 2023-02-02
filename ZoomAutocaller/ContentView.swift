@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Foundation
+import Combine
 
 struct BlueButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
@@ -20,10 +21,18 @@ struct BlueButton: ButtonStyle {
 
 struct ContentView: View {
     var latestMeetings = nextMeeting.getMeetings()
+    @State private var score = volume
     var statusBar: StatusBarController
     init(_ statusBar: StatusBarController) {
         self.statusBar = statusBar;
     }
+    let formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.minimum = 0
+        formatter.maximum = 100
+        return formatter
+    }()
     var body: some View {
         VStack(spacing: 8) {
             ForEach(latestMeetings, id: \.self) { meeting in
@@ -39,6 +48,20 @@ struct ContentView: View {
                 .padding(15)
                 .frame(height: 50)
             }
+            Divider()
+            HStack {
+                Text("Volume")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                TextField("Enter your score", value: $score, formatter: formatter)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                    .onReceive(Just(score)) { newValue in
+                        volume = newValue
+                    }
+                
+            }
+            .padding(15)
+            .frame(height: 20)
         }
         .padding(.vertical)
     }

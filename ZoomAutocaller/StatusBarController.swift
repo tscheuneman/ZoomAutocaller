@@ -32,8 +32,9 @@ class StatusBarController {
             do {
                 av = try AVAudioPlayer(data: audioAsset.data)
                 getCalendarEvents()
-                Timer.scheduledTimer(withTimeInterval: 300.0, repeats: true) {_ in
+                Timer.scheduledTimer(withTimeInterval: 300, repeats: true) {_ in
                     if(self.isInit) {
+                        print("Polling new cal events")
                         self.getCalendarEvents()
                     }
                 }
@@ -65,10 +66,8 @@ class StatusBarController {
     }
     
     func showPopover(_ sender: AnyObject) {
-        if(nextMeeting.hasMeetings()) {
-            if let statusBarButton = statusItem.button {
-                popover.show(relativeTo: statusBarButton.bounds, of: statusBarButton, preferredEdge: NSRectEdge.maxY)
-            }
+        if let statusBarButton = statusItem.button {
+            popover.show(relativeTo: statusBarButton.bounds, of: statusBarButton, preferredEdge: NSRectEdge.maxY)
         }
     }
     
@@ -123,7 +122,7 @@ class StatusBarController {
             nextMeeting.write(meetings: values)
             
             if(values.count > 0) {
-                self.av.setVolume(1.0, fadeDuration: 2)
+                self.av.setVolume((volume / 100), fadeDuration: 2)
                 self.av.play()
                 DispatchQueue.main.async {
                     if let statusBarButton = self.statusItem.button {

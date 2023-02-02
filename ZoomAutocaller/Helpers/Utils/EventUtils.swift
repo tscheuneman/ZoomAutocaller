@@ -12,6 +12,8 @@ let types: NSTextCheckingResult.CheckingType = .link
 
 let detector = try! NSDataDetector(types: types.rawValue)
 
+var volume = Float(100)
+
 func findUrls(text: String) -> String {
     let matches = detector.matches(in: text, options: [], range: NSMakeRange(0, text.count))
 
