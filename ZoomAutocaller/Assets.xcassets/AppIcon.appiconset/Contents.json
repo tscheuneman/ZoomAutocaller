@@ -21,11 +21,13 @@
       "size" : "32x32"
     },
     {
+      "filename" : "ZoomCaller128.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "128x128"
     },
     {
+      "filename" : "ZoomCaller256.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "128x128"
