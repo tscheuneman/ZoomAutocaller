@@ -6,6 +6,7 @@ This is a simple toolbar utility that will render a dropdown and play a ringtone
 
 ## Releases
 
+- **0.0.8** - Stopped volume input being focused on load
 - **0.0.7** - Added app icon cause we want to be stylish
 - **0.0.6** - Clears previous meetings when new ones are generated.  Adds volume control
 - **0.0.5** - Fixes sound not playing.  Also fixes improper link seaching.

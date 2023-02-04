@@ -22,6 +22,7 @@ struct BlueButton: ButtonStyle {
 struct ContentView: View {
     var latestMeetings = nextMeeting.getMeetings()
     @State private var score = volume
+    @State private var focused = false
     var statusBar: StatusBarController
     init(_ statusBar: StatusBarController) {
         self.statusBar = statusBar;
@@ -56,8 +57,15 @@ struct ContentView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                     .onReceive(Just(score)) { newValue in
-                        volume = newValue
+                        if(newValue != volume) {
+                            volume = newValue
+                            self.statusBar.changedVolume()
+                            DispatchQueue.main.async {
+                                NSApp.keyWindow?.makeFirstResponder(nil)
+                            }
+                        }
                     }
+                    .focusable(focused)
                 
             }
             .padding(15)

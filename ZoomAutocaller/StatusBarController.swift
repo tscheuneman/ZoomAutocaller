@@ -144,4 +144,12 @@ class StatusBarController {
         }
     }
     
+    func changedVolume() {
+        DispatchQueue.main.async {
+            if let statusBarButton = self.statusItem.button {
+                statusBarButton.performClick(self)
+            }
+        }
+    }
+    
 }
