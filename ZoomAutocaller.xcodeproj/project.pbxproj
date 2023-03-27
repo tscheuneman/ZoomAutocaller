@@ -19,6 +19,8 @@
 		E929F19C26B3CD9B000021FC /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929F19B26B3CD9B000021FC /* Meeting.swift */; };
 		E929F19E26B3CDC1000021FC /* Meetings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929F19D26B3CDC1000021FC /* Meetings.swift */; };
 		E929F1A026BCDEC8000021FC /* NewMeeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929F19F26BCDEC8000021FC /* NewMeeting.swift */; };
+		E9A08A3A29D1176900F9F289 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A08A3929D1176900F9F289 /* SettingsView.swift */; };
+		E9A08A3C29D1184B00F9F289 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A08A3B29D1184B00F9F289 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		E929F19B26B3CD9B000021FC /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 		E929F19D26B3CDC1000021FC /* Meetings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meetings.swift; sourceTree = "<group>"; };
 		E929F19F26BCDEC8000021FC /* NewMeeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMeeting.swift; sourceTree = "<group>"; };
+		E9A08A3929D1176900F9F289 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E9A08A3B29D1184B00F9F289 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,8 @@
 				E929F19A26B3CD73000021FC /* Helpers */,
 				E929F16726B3B86E000021FC /* AppDelegate.swift */,
 				E929F16926B3B86E000021FC /* ContentView.swift */,
+				E9A08A3B29D1184B00F9F289 /* HomeView.swift */,
+				E9A08A3929D1176900F9F289 /* SettingsView.swift */,
 				E929F16B26B3B86F000021FC /* Assets.xcassets */,
 				E929F17026B3B86F000021FC /* Main.storyboard */,
 				E929F17326B3B86F000021FC /* Info.plist */,
@@ -296,7 +302,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9A08A3C29D1184B00F9F289 /* HomeView.swift in Sources */,
 				E929F16A26B3B86E000021FC /* ContentView.swift in Sources */,
+				E9A08A3A29D1176900F9F289 /* SettingsView.swift in Sources */,
 				E929F19C26B3CD9B000021FC /* Meeting.swift in Sources */,
 				E929F1A026BCDEC8000021FC /* NewMeeting.swift in Sources */,
 				E929F19726B3B896000021FC /* StatusBarController.swift in Sources */,

@@ -22,14 +22,14 @@
 	<string>1</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
-	<key>NSMainStoryboardFile</key>
-	<string>Main</string>
 	<key>LSUIElement</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Authorize use of the calendar?</string>
 	<key>NSFileProviderDomainUsageDescription</key>
 	<string></string>
+	<key>NSMainStoryboardFile</key>
+	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

@@ -8,11 +8,17 @@
 import Foundation
 import EventKit
 
+let providers = [
+    "zoom.us",
+    "meet.google.com"
+]
+
 let types: NSTextCheckingResult.CheckingType = .link
 
 let detector = try! NSDataDetector(types: types.rawValue)
 
 var volume = Float(100)
+var provider = 0
 
 func findUrls(text: String) -> String {
     let matches = detector.matches(in: text, options: [], range: NSMakeRange(0, text.count))
@@ -20,7 +26,7 @@ func findUrls(text: String) -> String {
     var resolvedUrl: String = ""
     for match in matches {
         let zoomUrl = match.url?.absoluteString ?? "";
-        if(zoomUrl.contains("zoom.us")) {
+        if(zoomUrl.contains(providers[provider])) {
             resolvedUrl = zoomUrl
             break
         }

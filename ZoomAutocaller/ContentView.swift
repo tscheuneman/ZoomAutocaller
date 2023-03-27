@@ -21,12 +21,9 @@ struct BlueButton: ButtonStyle {
 
 struct ContentView: View {
     var latestMeetings = nextMeeting.getMeetings()
-    @State private var score = volume
-    @State private var focused = false
-    var statusBar: StatusBarController
-    init(_ statusBar: StatusBarController) {
-        self.statusBar = statusBar;
-    }
+    @Binding var buttonClick: Bool
+    @Binding var statusBar: StatusBarController
+
     let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -51,22 +48,9 @@ struct ContentView: View {
             }
             Divider()
             HStack {
-                Text("Volume")
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                TextField("Enter your score", value: $score, formatter: formatter)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-                    .onReceive(Just(score)) { newValue in
-                        if(newValue != volume) {
-                            volume = newValue
-                            self.statusBar.changedVolume()
-                            DispatchQueue.main.async {
-                                NSApp.keyWindow?.makeFirstResponder(nil)
-                            }
-                        }
-                    }
-                    .focusable(focused)
-                
+                Button(action: { withAnimation { buttonClick.toggle() } }, label: {
+                    Text("Settings")
+                })
             }
             .padding(15)
             .frame(height: 20)
