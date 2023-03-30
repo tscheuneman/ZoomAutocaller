@@ -8,7 +8,7 @@
 import Foundation
 import EventKit
 
-let providers = [
+let providers: [String] = [
     "zoom.us",
     "meet.google.com"
 ]
