@@ -45,6 +45,7 @@ class StatusBarController {
                         self.getNewEvents()
                     }
                 }
+                
             } catch {
                 print("Error")
             }
@@ -122,6 +123,8 @@ class StatusBarController {
             nextMeeting.write(meetings: values)
             
             if(values.count > 0) {
+                let volume = UserDefaults.standard.float(forKey: "volume")
+
                 self.av.setVolume((volume / 100), fadeDuration: 2)
                 self.av.play()
                 DispatchQueue.main.async {
