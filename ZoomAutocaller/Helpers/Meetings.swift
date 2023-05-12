@@ -29,7 +29,6 @@ class Meetings {
     public func getCurrentMeetings() -> [Meeting] {
         let currentDate = Date(timeIntervalSinceNow: -30)
         let oneMinLater = Date(timeIntervalSinceNow: 40)
-        
         let returnMeetings: [Meeting] = self.meetings.filter { $0.time >= currentDate && $0.time <= oneMinLater }
         
         self.meetings = Array(Set(self.meetings).subtracting(returnMeetings))
@@ -40,8 +39,7 @@ class Meetings {
     public func addMeeting(resolvedUrl: String, event: EKEvent) {
         if(!self.exists(link: resolvedUrl, time: event.startDate)) {
             let meeting = Meeting(time: event.startDate, title: event.title, zoomLink: resolvedUrl);
-            
-            meetings.append(meeting)
+            self.meetings.append(meeting)
         }
     }
 }

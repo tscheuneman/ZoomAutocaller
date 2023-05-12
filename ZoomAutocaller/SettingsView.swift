@@ -13,7 +13,9 @@ struct SettingsView: View {
     var latestMeetings = nextMeeting.getMeetings()
     @State private var focused = false
 
-    @AppStorage("provider") var selectedProvider: Int = 0
+    @AppStorage("useZoom") var useZoom: Bool = false
+    @AppStorage("useGoogle") var useGoogle: Bool = false
+
     @AppStorage("volume") var volume: Double = 100.0
     
     @Binding var buttonClick: Bool
@@ -41,14 +43,16 @@ struct SettingsView: View {
             .frame(height: 20)
             HStack {
                 VStack {
-                    Picker(selection: $selectedProvider, label: Text("Providers")) {
-                        Text("Zoom").tag(0)
-                        Text("Google Meet").tag(1)
+                    Toggle(isOn: $useZoom) {
+                        Text("Use Zoom")
+                    }
+                    Toggle(isOn: $useGoogle) {
+                        Text("Use Google Meet")
                     }
                 }
             }
             .padding(15)
-            .frame(height: 20)
+            .frame(height: 45)
             HStack {
                 Button(action: { withAnimation { buttonClick.toggle() } }, label: {
                     Text("Meetings")

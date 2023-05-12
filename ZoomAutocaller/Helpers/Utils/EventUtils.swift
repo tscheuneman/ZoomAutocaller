@@ -8,9 +8,9 @@
 import Foundation
 import EventKit
 
-let providers: [String] = [
-    "zoom.us",
-    "meet.google.com"
+let providers: [String:String] = [
+    "ZOOM": "zoom.us",
+    "GOOGLE": "meet.google.com"
 ]
 
 let types: NSTextCheckingResult.CheckingType = .link
@@ -23,15 +23,33 @@ func findUrls(text: String) -> String {
 
     var resolvedUrl: String = ""
     for match in matches {
-        let zoomUrl = match.url?.absoluteString ?? "";
-        let providerIndex = UserDefaults.standard.integer(forKey: "provider")
-        if(zoomUrl.contains(providers[providerIndex])) {
-            resolvedUrl = zoomUrl
+        let url = match.url?.absoluteString ?? "";
+        if(findMatchingUrl(url: url)) {
+            resolvedUrl = url
             break
         }
     }
     
     return resolvedUrl
+}
+
+func findMatchingUrl(url: String) -> Bool {
+    let useZoom = UserDefaults.standard.bool(forKey: "useZoom")
+    let useGoogle = UserDefaults.standard.bool(forKey: "useGoogle")
+
+    if(useZoom) {
+        if(url.contains(providers["ZOOM"]!)) {
+            return true
+        }
+    }
+    
+    if(useGoogle) {
+        if(url.contains(providers["GOOGLE"]!)) {
+            return true
+        }
+    }
+    
+    return false
 }
 
 func findEvents(eventStore: EKEventStore, calendars: [EKCalendar]) -> [EKEvent] {
