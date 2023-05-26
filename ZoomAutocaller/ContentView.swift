@@ -19,6 +19,16 @@ struct BlueButton: ButtonStyle {
     }
 }
 
+struct SettingButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(5)
+            .background(Color(red: 3/255, green: 115/255, blue: 200/255, opacity: 100))
+            .foregroundColor(.white)
+            .clipShape(Capsule())
+    }
+}
+
 struct ContentView: View {
     var latestMeetings = nextMeeting.getMeetings()
     @Binding var buttonClick: Bool

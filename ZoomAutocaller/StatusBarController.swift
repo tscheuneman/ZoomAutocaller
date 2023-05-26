@@ -28,30 +28,19 @@ class StatusBarController {
             statusBarButton.target = self
         }
         
-        if let audioAsset = NSDataAsset(name: "ring") {
-            do {
-                av = try AVAudioPlayer(data: audioAsset.data)
-                getCalendarEvents()
-                Timer.scheduledTimer(withTimeInterval: 300, repeats: true) {_ in
-                    if(self.isInit) {
-                        print("Polling new cal events")
-                        self.getCalendarEvents()
-                    }
-                }
-                
-                Timer.scheduledTimer(withTimeInterval: 40.0, repeats: true) {_ in
-                    if(self.isInit) {
-                        print("Pooling For New Events")
-                        self.getNewEvents()
-                    }
-                }
-                
-            } catch {
-                print("Error")
+        getCalendarEvents()
+        Timer.scheduledTimer(withTimeInterval: 300, repeats: true) {_ in
+            if(self.isInit) {
+                print("Polling new cal events")
+                self.getCalendarEvents()
             }
-
-        } else {
-            print("Failed to load sound")
+        }
+        
+        Timer.scheduledTimer(withTimeInterval: 40.0, repeats: true) {_ in
+            if(self.isInit) {
+                print("Pooling For New Events")
+                self.getNewEvents()
+            }
         }
         
     }
@@ -123,15 +112,30 @@ class StatusBarController {
             nextMeeting.write(meetings: values)
             
             if(values.count > 0) {
-                let volume = UserDefaults.standard.float(forKey: "volume")
-
-                self.av.setVolume((volume / 100), fadeDuration: 2)
-                self.av.play()
+                self.playSound()
                 DispatchQueue.main.async {
                     if let statusBarButton = self.statusItem.button {
                         self.delegate.initView()
                         statusBarButton.performClick(self)
                     }
+                }
+            }
+        }
+    }
+    
+    func playSound() {
+        let autoAsset = UserDefaults.standard.integer(forKey: "ringtone")
+        if(!ringtones[autoAsset].isEmpty) {
+            let audioAsset = NSDataAsset(name: ringtones[autoAsset])
+            if(audioAsset != nil) {
+                do {
+                    let volume = UserDefaults.standard.float(forKey: "volume")
+
+                    self.av.setVolume((volume / 100), fadeDuration: 2)
+                    self.av = try AVAudioPlayer(data: audioAsset!.data)
+                    self.av.play()
+                } catch {
+                    print("Failed to play sound")
                 }
             }
         }

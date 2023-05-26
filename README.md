@@ -6,6 +6,7 @@ This is a simple toolbar utility that will render a dropdown and play a ringtone
 
 ## Releases
 
+- **0.0.12** - Gives options to change the notification ringtone
 - **0.0.11** - Allows to get meetings notifiation from Zoom and Google Meet at the same time
 - **0.0.10** - Saves settings to to UserDefaults so they persist
 - **0.0.9** - Moved settings into a seperate menu.  Create a toggle to also read Google Meet meetings

@@ -15,6 +15,7 @@ struct SettingsView: View {
 
     @AppStorage("useZoom") var useZoom: Bool = false
     @AppStorage("useGoogle") var useGoogle: Bool = false
+    @AppStorage("ringtone") var seletedRingtone: Int = 0
 
     @AppStorage("volume") var volume: Double = 100.0
     
@@ -41,6 +42,26 @@ struct SettingsView: View {
             }
             .padding(15)
             .frame(height: 20)
+            HStack {
+                VStack {
+                    Picker(selection: $seletedRingtone, label: Text("Ringtone")) {
+                        Text("Phone (Default)").tag(0)
+                        Text("Pager").tag(1)
+                        Text("Alarm").tag(2)
+                        Text("None").tag(3)
+                    }
+                }
+            }
+            .padding(10)
+            .frame(height: 45)
+            HStack {
+                Button("Preview") {
+                    self.statusBar.playSound()
+                }
+            }
+            .padding(5)
+            Divider()
+            .padding(5)
             HStack {
                 VStack {
                     Toggle(isOn: $useZoom) {

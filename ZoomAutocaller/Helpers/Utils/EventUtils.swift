@@ -8,6 +8,8 @@
 import Foundation
 import EventKit
 
+let ringtones = ["ring", "pager", "alarm", ""]
+
 let providers: [String:String] = [
     "ZOOM": "zoom.us",
     "GOOGLE": "meet.google.com"
