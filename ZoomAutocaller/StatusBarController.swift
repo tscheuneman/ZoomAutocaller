@@ -130,9 +130,8 @@ class StatusBarController {
             if(audioAsset != nil) {
                 do {
                     let volume = UserDefaults.standard.float(forKey: "volume")
-
-                    self.av.setVolume((volume / 100), fadeDuration: 2)
                     self.av = try AVAudioPlayer(data: audioAsset!.data)
+                    self.av.volume = volume / 100
                     self.av.play()
                 } catch {
                     print("Failed to play sound")
