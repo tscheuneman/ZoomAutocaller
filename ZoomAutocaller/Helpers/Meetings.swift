@@ -12,13 +12,21 @@ let meetings = Meetings()
 
 class Meetings {
     var meetings: [Meeting];
+    private var handledMeetingKeys: [String: Date]
+    private let handledRetentionWindow: TimeInterval = 60 * 60 * 6 // 6 hours
     
     init() {
         meetings = []
+        handledMeetingKeys = [:]
     }
     
     public func clearMeetings() {
         meetings = []
+    }
+    
+    public func resetAll() {
+        meetings = []
+        handledMeetingKeys = [:]
     }
     
     public func exists(link: String, time: Date) -> Bool {
@@ -32,14 +40,35 @@ class Meetings {
         let returnMeetings: [Meeting] = self.meetings.filter { $0.time >= currentDate && $0.time <= oneMinLater }
         
         self.meetings = Array(Set(self.meetings).subtracting(returnMeetings))
+        markMeetingsHandled(returnMeetings)
         
         return returnMeetings
     }
     
     public func addMeeting(resolvedUrl: String, event: EKEvent) {
+        let meeting = Meeting(time: event.startDate, title: event.title, zoomLink: resolvedUrl);
+        if handledMeetingKeys[meeting.uniqueKey] != nil {
+            return
+        }
+        
         if(!self.exists(link: resolvedUrl, time: event.startDate)) {
-            let meeting = Meeting(time: event.startDate, title: event.title, zoomLink: resolvedUrl);
             self.meetings.append(meeting)
+        }
+    }
+    
+    private func markMeetingsHandled(_ meetings: [Meeting]) {
+        for meeting in meetings {
+            handledMeetingKeys[meeting.uniqueKey] = meeting.time
+        }
+        purgeHandledMeetings()
+    }
+    
+    private func purgeHandledMeetings() {
+        let cutoff = Date(timeIntervalSinceNow: -handledRetentionWindow)
+        handledMeetingKeys = handledMeetingKeys.reduce(into: [:]) { result, entry in
+            if entry.value >= cutoff {
+                result[entry.key] = entry.value
+            }
         }
     }
 }

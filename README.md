@@ -6,6 +6,7 @@ This is a simple toolbar utility that will render a dropdown and play a ringtone
 
 ## Releases
 
+- **0.0.14** - Fixed issue with meetings triggering again after joining
 - **0.0.13** - Fixed volume not getting set properly
 - **0.0.12** - Gives options to change the notification ringtone
 - **0.0.11** - Allows to get meetings notifiation from Zoom and Google Meet at the same time

@@ -12,6 +12,11 @@ class Meeting: Hashable {
     var title: String
     var zoomLink: URL
     
+    /// Uniquely identifies a meeting using the scheduled time and url.
+    var uniqueKey: String {
+        return "\(time.timeIntervalSince1970)#\(zoomLink.absoluteString)"
+    }
+    
     init(time: Date, title: String, zoomLink: String) {
         self.time = time
         self.title = title
