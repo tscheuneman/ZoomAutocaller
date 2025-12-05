@@ -8,6 +8,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var popover = NSPopover.init()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        UserDefaults.standard.register(defaults: ["volume": 100.0])
         statusBar = StatusBarController(popover: popover, delegate: self)
         initView()
     }

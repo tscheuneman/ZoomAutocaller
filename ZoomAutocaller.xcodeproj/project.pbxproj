@@ -21,6 +21,7 @@
 		E929F1A026BCDEC8000021FC /* NewMeeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929F19F26BCDEC8000021FC /* NewMeeting.swift */; };
 		E9A08A3A29D1176900F9F289 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A08A3929D1176900F9F289 /* SettingsView.swift */; };
 		E9A08A3C29D1184B00F9F289 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A08A3B29D1184B00F9F289 /* HomeView.swift */; };
+		E9C8B1102C36F7A500000001 /* NotificationSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8B10F2C36F7A500000001 /* NotificationSchedule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		E929F19F26BCDEC8000021FC /* NewMeeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMeeting.swift; sourceTree = "<group>"; };
 		E9A08A3929D1176900F9F289 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E9A08A3B29D1184B00F9F289 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E9C8B10F2C36F7A500000001 /* NotificationSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSchedule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				E929F19B26B3CD9B000021FC /* Meeting.swift */,
 				E929F19D26B3CDC1000021FC /* Meetings.swift */,
 				E929F19F26BCDEC8000021FC /* NewMeeting.swift */,
+				E9C8B10F2C36F7A500000001 /* NotificationSchedule.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				E9A08A3C29D1184B00F9F289 /* HomeView.swift in Sources */,
 				E929F16A26B3B86E000021FC /* ContentView.swift in Sources */,
 				E9A08A3A29D1176900F9F289 /* SettingsView.swift in Sources */,
+				E9C8B1102C36F7A500000001 /* NotificationSchedule.swift in Sources */,
 				E929F19C26B3CD9B000021FC /* Meeting.swift in Sources */,
 				E929F1A026BCDEC8000021FC /* NewMeeting.swift in Sources */,
 				E929F19726B3B896000021FC /* StatusBarController.swift in Sources */,
